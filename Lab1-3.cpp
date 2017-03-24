@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <cstdio>
 #include <iostream>
 #include <ctime>
 #define NA 6 
@@ -29,9 +30,7 @@ int i,j;
 for(i=0;i<n;i++){
     for(j=0;j<m;j++){
         if(p[i][j]==x){
-            //delete [] p[i];
-            //free(p[i]);
-            p[i]=NULL;        
+            free(p[i]);        
         }
     }    
 }
