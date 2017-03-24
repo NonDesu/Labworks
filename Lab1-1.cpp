@@ -1,13 +1,16 @@
 #include <cstdlib>
 #include <iostream>
+#include <ctime>
 #define K 10
 #define N 4
 #define M 4
 using namespace std;
 void INPUT(int *p, int n){
     int i;
+    srand(time(0));
     for(i=0;i<n;i++)
-        scanf("%d",(p+i));
+        *(p+i)=rand()%10;
+        //scanf("%d",(p+i));
 }
 void OUTPUT(int *p, int n, int m){
     int i,j;
@@ -31,7 +34,7 @@ void CHECK(int *p, int n){
     for(i=0;i<n;i++)
         if(*(p+i)<m)m=*(p+i);
     for(i=0;i<n;i++)
-        if(*(p+1)==m)throw std::exception();
+        if(*(p+i)==m)throw std::exception();
             
 }
 int main(){
@@ -43,7 +46,8 @@ OUTPUT(&a[0],K,1);
 printf("B:\n");
 INPUT(&b[0][0],N*M);
 OUTPUT(&b[0][0],N,M);
-
+CHECK(&a[0],K);
+CHECK(&b[0][0],N*M);
 ai=MINDX(&a[0],K);
 bi=MINDX(&b[0][0],N*M);
 

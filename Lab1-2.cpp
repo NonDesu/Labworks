@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <cstdio>
-#include <iostream>
+//#include <iostream>
 #include <ctime>
 #define NA 6 
 #define MA 9
