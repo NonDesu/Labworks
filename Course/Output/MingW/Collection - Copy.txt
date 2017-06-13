@@ -1,0 +1,22 @@
+Japan 5 Silver 1300 90000 1
+USA 0.25 Nickel 1900 4 100
+France 1 Nickel 1980 1 1
+Russia 1 Gold 1400 100000 2
+
+//
+
+Example1 1 Example1 1 1 1
+Example2 2 Example2 2 2 2
+Example3 3 Example3 3 3 3
+Example4 4 Example4 4 4 4
+Example5 5 Example5 5 5 5
+Example6 6 Example6 6 6 6
+Example7 7 Example7 7 7 7
+Example8 8 Example8 8 8 8
+Example9 9 Example9 9 9 9
+Example10 10 Example10 10 10 10
+Example11 11 Example11 11 11 11
+Example12 12 Example12 12 12 12
+Example13 13 Example13 13 13 13
+Example14 14 Example14 14 14 14
+Example15 15 Example15 15 15 15
