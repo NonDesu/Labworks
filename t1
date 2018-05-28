@@ -1,0 +1,117 @@
+#include <cstdlib>
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+    
+    
+    void ArrayIn(int* p, int* p_len){
+        for(int i=0;i<*p_len;i++)
+            *(p+i)=rand()%30+1;      
+    }
+    void ArrayOut(int* p, int* p_len){
+        cout << "-Array Output\n";
+        for(int i=0;i<*p_len;i++)
+            cout << *(p+i) << " ";
+        cout << "/// l=" << *p_len << "\n";
+    }
+    void Insert(int* p, int* p_len, int ins){
+        int* tmp;
+        int ins_f=0, ins_l=0, i, n = *p_len;
+        ArrayOut(p, p_len);
+        for(i = 0; i < *p_len; i++)
+            if(*(p+i) > ins)ins_l=i+1;
+        for(i = *p_len-1; i >= 0; i--)
+            if(*(p+i) > ins)ins_f=i;
+        cout << ins_f << "//" << ins_l << "\n";
+        cout << "+Search Success\n";
+        
+        if((ins_f == ins_l) && (ins_f == 0))
+        {
+            (*p_len)++;
+            tmp = new int[*p_len];
+            memset(tmp, 0, *p_len);
+            *tmp = ins;
+            ArrayOut(tmp, p_len);
+            for(i = 0; i < *p_len-1; i++)
+                *(tmp+i+1) = *(p+i);
+                ArrayOut(tmp, p_len);
+        }
+        else
+        {
+            if((ins_f == 0)&&(ins_l == *p_len))
+            {
+                ins_l++;
+                (*p_len)+=2;
+                tmp = new int[*p_len];
+                memset(tmp, 0, *p_len);
+                *tmp = ins;
+                *(tmp+ins_l) = ins;
+                ArrayOut(tmp, p_len);
+                for(i = 1; i < ins_l; i++)
+                    *(tmp+i) = *(p+i-1);
+                ArrayOut(tmp, p_len);
+            }
+            else
+            {
+                if(ins_f == 0)
+                {
+                    ins_l++;
+                    (*p_len)+=2;
+                    tmp = new int[*p_len];
+                    memset(tmp, 0, *p_len);
+                    *tmp = ins;
+                    *(tmp+ins_l) = ins;
+                    ArrayOut(tmp, p_len);
+                    for(i = 1; i < ins_l; i++)
+                        *(tmp+i) = *(p+i-1);
+                    for(i = ins_l+1; i < *p_len; i++)
+                        *(tmp+i) = *(p+i-2);
+                    ArrayOut(tmp, p_len);
+                }
+                else
+                {
+                    ins_l++;
+                    (*p_len)+=2;
+                    tmp = new int[*p_len];
+                    memset(tmp, 0, *p_len);
+                    *(tmp + ins_f) = ins;
+                    *(tmp + ins_l) = ins;
+                    ArrayOut(p, p_len);
+                    for(i = 0; i < ins_f; i++)
+                        *(tmp + i) = *(p + i);
+                    ArrayOut(p, p_len);
+                    for(i = ins_f+1; i < ins_l; i++)
+                        *(tmp + i) = *(p + i - 1);
+                    ArrayOut(p, p_len);
+                    for(i = ins_l+1; i < *p_len; i++)
+                        *(tmp + i) = *(p + i - 2);
+                    ArrayOut(p, p_len);
+                    ArrayOut(p, p_len);
+                }
+            }
+        }
+        cout << "+\n";
+        delete p;
+        p = tmp;
+        delete tmp;        
+    }
+int main()
+{
+    int *p, n[1], ins;
+    srand(time(0));
+    cout << "Length: ";
+    cin >> *n;
+    cout << "\n";
+    p = new int[*n];
+    ArrayIn(p, n);
+    ArrayOut(p, n);
+    cout <<"Insert: ";
+    cin >> ins;
+    cout << "\n";
+    Insert(p, n, ins);
+    ArrayOut(p, n);
+    delete p;
+    system("PAUSE");
+    return EXIT_SUCCESS;
+}
